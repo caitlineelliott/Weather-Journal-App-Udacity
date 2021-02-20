@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Computed Styles -->
+    <link rel="stylesheet" href="app.css">
+    <!-- Google Fonts: Roboto & Vidaloka -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Vidaloka&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+    <title>Weather Journal App</title>
+</head>
+
+<body>
+    <div id="container" class="center-center">
+        <div id="main">
+            <h1>Weather Journal</h1>
+            <div id="journal-prompt" class="card">
+                <form action="" id="weather-form">
+                    <div id="location">
+                        <label for="zip">
+                            <h2>Where are you located?</h2>
+                            <input name="zip" id="zip" placeholder="enter zip code here" maxlength="5" type="text"
+                                required></input>
+                        </label>
+                    </div>
+                    <div id="prompt">
+                        <label for="feelings">
+                            <h2>How are you feeling today?</h2>
+                            <textarea name="feelings" id="feelings" cols="20" rows="7"
+                                placeholder="Describe your mood..." required></textarea>
+                        </label>
+                    </div>
+                    <h2>Select your mood:</h2>
+                    <div id="mood">
+                        <input type="radio" name="gender" value="female" class="v-sad" id="depressed">
+                        <label for="depressed" class="v-sad moods" id="fa-sad-tear" tabindex="0">
+                        </label>
+
+                        <input type="radio" name="gender" value="female" class="sad" id="sad">
+                        <label for="sad" class="sad moods" id="fa-frown" tabindex="0">
+                        </label>
+
+                        <input type="radio" name="gender" value="female" class="happy" id="happy">
+                        <label for="happy" class="happy moods" id="fa-smile" tabindex="0">
+                        </label>
+
+                        <input type="radio" name="gender" value="female" class="meh" id="meh">
+                        <label for="meh" class="meh moods" id="fa-meh" tabindex="0">
+                        </label>
+
+                        <input type="radio" name="gender" value="female" class="angry" id="angry">
+                        <label for="angry" class="angry moods" id="fa-angry" tabindex="0">
+                        </label>
+                    </div>
+                    <div id="execute">
+                        <button id="generate">
+                            <h3>Submit</h3>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="entryContainer">
+            <div class="card" id="entryHolder">
+                <div id="date">
+                    <h2 id="date-label"></h2>
+                </div>
+                <div class="entries">
+                    <div id="data-r1" class="center-center">
+                        <div id="mood">
+                            <i id="moodIcon" class="fas"></i>
+                        </div>
+                        <div id="weather">
+                            <img></img>
+                        </div>
+                        <div id="temp" class="center-center">
+                        </div>
+                    </div>
+                    <div id="data-r2">
+                        <div id="mood-name" class="center-center">
+                        </div>
+                        <div id="weather-name" class="center-center">
+                        </div>
+                        <div id="temp-feels" class="center-center">
+                        </div>
+                    </div>
+                    <h2 id="entry-Title">Journal Entry</h2>
+                    <div id="content"></div>
+                </div>
+            </div>
+            <button id="back">
+                <h3> <i class="fas fa-angle-left"></i>Back</h3>
+            </button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
