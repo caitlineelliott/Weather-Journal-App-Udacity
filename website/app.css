@@ -1,9 +1,9 @@
 /* MOBILE STYLES */
-
 body {
+    margin: 0;
     background: #264653 url('https://i.ibb.co/j4XWW1w/Screen-Shot-2021-02-12-at-11-24-39-PM.png') repeat fixed -50px -50px;
     background-size: 125%;
-    margin: 0;
+    font-family: 'roboto';
 }
 
 /* vertical + horizontal center */
@@ -16,43 +16,36 @@ body {
 /* Scroll Bar */
 ::-webkit-scrollbar {
     width: 8px;
-  }
+}
 
-/* Track */
 ::-webkit-scrollbar-track {
+    border-radius: 10px;
     background:#227e72;
-    border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #264653;
     border-radius: 10px;
+    background: #264653;
 }
 
-/* vertical + horizontal center */
-
-#container {
-    flex-direction: column;
-}
+/* Journal Prompt Styling */
 
 h1 {
-    color: #e9c46a;
     font: 8.25vh 'vidaloka';
+    color: #e9c46a;
     text-align: center;
     line-height: 0.9em;
 }
 
 h2 {
-    color: #264653;
     font: 2.5vh 'vidaloka';
+    color: #264653;
 }
 
 h3 {
-    color: #e9c46a;
-    font: 3.5vh 'vidaloka';
-    text-align: center;
     margin-bottom: 3vh;
+    font: 3.5vh 'vidaloka';
+    color: #e9c46a;
 }
 
 h3:hover {
@@ -61,61 +54,52 @@ h3:hover {
     transition: 300ms;
 }
 
-#main {
-    width: 100vw;
-}
-
 .card {
-    width: 75vw;
-    height: 55vh;
     margin: 0 auto;
+    box-shadow: 8px 6px 20px -1px #223f4b;
     border: 2px solid #227e72;
     border-radius: 30px;
     padding: 20px;
     background-color: #2a9d8f;
+    width: 75vw;
+    height: 55vh;
     text-align: center;
-    box-shadow: 8px 6px 20px -1px #223f4b;
-}
-
-#execute {
-    height: 10vh;
-    margin-top: 4vh;
 }
 
 #zip {
-    padding: 10px;
-    background-color: #227e72;
     width: 80%;
-    font: 2.2vh 'roboto';
-    color: #e9c46a;
     border-radius: 10px;
     border: 2px solid #223f4b;
+    padding: 10px;
+    background-color: #227e72;
+    font-size: 2.2vh;
+    color: #e9c46a;
 }
 
 textarea {
-    padding: 10px;
-    background-color: #227e72;
     width: 75%;
-    border: 2px solid #223f4b;
     padding: 20px;
-    font: 400 2.2vh 'roboto';
+    border: 2px solid #223f4b;
     border-radius: 10px;
+    background-color: #227e72;
+    font: 2.2vh 'roboto';
     color: #e9c46a;
 }
 
 ::placeholder {
     color: #e9c46a;
-    font: 400 2.2vh 'roboto';
 }
 
 input[type=radio] {
-    position: absolute;
-    margin-left: -900px;
-  }
+    opacity: 0;
+    position: relative;
+    left: 7vw;
+}
 
-#mood {
+#mood-home {
     display: flex;
     justify-content: space-evenly;
+    margin-left: -7vw;
 }
 
 .moods {
@@ -123,7 +107,7 @@ input[type=radio] {
     font-size: 25px;
 }
 
-  /* v sad */
+/* v sad */
 input.v-sad:checked ~ label.v-sad:before {
     content: '\f5b4';
     font-weight: 900;
@@ -131,7 +115,6 @@ input.v-sad:checked ~ label.v-sad:before {
 
 label.v-sad:before {
     content: '\f5b4';
-    font-weight: 200;
     color: #264653;
 }
 
@@ -143,7 +126,6 @@ input.sad:checked ~label.sad:before {
 
 label.sad:before {
     content: '\f119';
-    font-weight: 200;
     color: #1d6e64;
 }
 
@@ -167,7 +149,6 @@ input.meh:checked ~label.meh:before {
 
 label.meh:before {
     content: '\f11a';
-    font-weight: 200;
     color: #f4a261;
 }
 
@@ -179,7 +160,6 @@ label.meh:before {
 
 label.angry:before {
     content: '\f556';
-    font-weight: 200;
     color: #a24e39;
 }
 
@@ -188,28 +168,37 @@ label.angry:before {
     border: none;
     background-color: transparent;
     color: #264653;
-    font-family: 'vidaloka';
-    font-size: 1.3em;
+    font: 1.3em 'vidaloka';
 }
 
-#generate {
-    height: 8vh;
+#execute {
+    margin-top: 4vh;
 }
 
 /* PREVIOUS ENTRIES STYLES */
 
-#entryContainer {
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* default, before submitting */
+#entry-container {
     display: none;
 }
 
-.entries {
-    width: 75vw;
-    font: 2vh'roboto';
-    border-radius: 10px;
-    text-align: justify;
-    color: #264653;
+#entryHolder {
+    background-color: #1b655b;
+}
+
+#temp {
     display: flex;
     flex-direction: column;
+    width: 75vw;
+    border-radius: 10px;
+    color: #e9c46a;
+    font: 2vh'roboto';
+    text-align: justify;
 }
 
 #data-r1,
@@ -217,45 +206,42 @@ label.angry:before {
     justify-content: space-evenly;
     display: flex;
     flex-direction: row;
-}
-
-#mood,
-#mood-name,
-#weather-name,
-#temp-feels,
-#weather,
-#temp {
-    border: 1px solid yellow;
     text-align: center;
+    width: 100%;
 }
 
 #mood,
 #weather,
-#temp {
+#temp-num {
     display: flex;
     flex-direction: column;
     font-size: 6vh;
     height: 100px;
-    width: 100px;
 }
 
 #mood-name,
 #weather-name,
-#temp-name {
-    font-size: 2vh;
-    height: 38px;
-    width: 87.625px;
+#high-low {
+    font-size: 1.5vh;
 }
 
+#weather-name {
+    width: 100px;
+}
+
+#date-label,
 #entry-Title {
     width: 100%;
     text-align: center;
+    color: #7ab2aa;
 }
 
-#content {
+#entry-text {
     padding: 10px;
     height: 18vh;
     overflow: auto;
+    text-align: left;
+    color: #e9c46a;
 }
 
 .fa-angle-left {
@@ -264,15 +250,15 @@ label.angry:before {
 
 #back {
     margin: 0 auto;
+    width: 100%;
     border: none;
     background-color: transparent;
     color: #e9c46a;
     font: 1.3em 'vidaloka';
-    width: 100%;
 }
 
 /* TABLET SIZE */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
     body {
         background-size: 90%;
     }
@@ -280,19 +266,44 @@ label.angry:before {
     h1 {
         font-size: 8vh;
         width: 50%;
-        margin-top: 8vh auto 0 auto;
+        margin: 6vh auto 4vh auto;
     }
 
     .card {
-        width: 50%;
+        width: 60%;
+        height: 53vh;
+        margin: 0 auto;
     }
 
-    #entryContainer {
-        height: 33vh;
+    .moods {
+        font-size: 35px;
+    }
+
+    input[type=radio] {
+        left: 5vw;
+    }
+    
+    #mood-home {
+        margin-left: -5vw;
     }
 
     #entryHolder {
-        width: 75vw;
+        width: 92%;
+        background-color: #1d6e64;
+        border: 2px solid #2a9d8f;
+        margin-right: 0;
+    }
+
+    #temp {
+        width: 100%;
+    }
+
+    #back {
+        width: 100%;
+    }
+
+    #execute {
+        margin-top: 2.5vh;
     }
 }
 
@@ -302,24 +313,32 @@ label.angry:before {
     }
 
     .card {
-        width: 30%;
+        width: 20vw;
+        height: 57vh;
     }
 
-    #data-r1{
-        width: 50%;
+    #entryHolder,
+    #temp {
+        width: 20vw;
     }
 
-    #content {
-        width: 95%;
-        margin: 0 auto;
+    .moods {
+        font-size: 25px;
     }
 
-    #entryHolder {
-        width: 50%;
+    input[type=radio] {
+        left: 2.25vw;
     }
 
-    .entries,
-    #data-r1{
-        width: 100%;
+    #mood-home {
+        margin-left: -2.25vw;
+    }
+
+    #execute {
+        margin-top: 7vh;
+    }
+
+    h3 {
+        margin-block-end: 0px;
     }
 }

@@ -1,3 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const fetch = require("node-fetch");
+
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
@@ -12,14 +17,14 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Cors for cross origin allowance
+// // Cors for cross origin allowance
 const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('website'));
 
-const port = 3000;
+const port = 3002;
 
 // Spin up the server
 // Callback to debug
@@ -41,28 +46,32 @@ function getData(req, res) {
 // Post Route
 app.post('/add', addData);
 
-function addData(req, res) {
+async function addData(req, res) {
     const newData = req.body;
+
     projectData["date"] = newData.date;
-    projectData["temp"] = newData.temp;
-    projectData["highLow"] = newData.highLow;
     projectData["entry"] = newData.entry;
     projectData["mood"] = newData.mood;
     projectData["moodLabel"] = newData.moodLabel;
-    projectData["weather"] = newData.weather;
-    projectData["weatherName"] = newData.weatherName;
-    res.send(projectData);
 
-    const dateTime = () => {
-        let today = new Date();
-        let date = `${today.getMonth()}.${today.getDate()}.${today.getFullYear()}`;
-        if (today.getHours() > 12) {
-            let dateTime = `${date} at ${today.getHours() - 12}:${today.getMinutes()}:${today.getSeconds()} p.m.`;
-            return dateTime;
-        } else {
-            let dateTime = `${date} at ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()} a.m.`;
-            return dateTime;
-        }
+    let weather = await getWeather(newData.zip, process.env.API_KEY);
+
+    projectData["weather"] = weather;
+    projectData["icon"] = weather.weather[0].icon;
+    projectData["temp"] = `${Math.trunc(weather.main.temp)}\u00B0`;
+    projectData["highLow"] = `${Math.trunc(weather.main.temp_max)}\u00B0 / ${Math.trunc(weather.main.temp_min)}\u00B0`;
+    projectData["weatherName"] = `${weather.weather[0].description}`;
+
+    res.send(projectData);
+};
+
+/* Function to GET Web API Data*/
+const getWeather = async (userZip, APIKey) => {
+    try {
+        const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&appid=${APIKey}&units=imperial`);
+        return await request.json();
     }
-    console.log(`DATA SUCCESSFULLY POSTED ON ${dateTime()}`);
+    catch (e) {
+        console.log('FAILED TO FETCH WEATHER API DATA:', e);
+    }
 };

@@ -1,0 +1,20 @@
+{
+  "name": "Weather-Journal-App",
+  "version": "1.0.0",
+  "description": "an app to match a user's mood to the weather data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "PORT=3002 node server.js"
+  },
+  "author": "Caitlin Elliott",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "node-fetch": "^2.6.6"
+  }
+}
